@@ -1,0 +1,21 @@
+<!-- Metabrand case videos: one block for the whole page (Page settings → Custom code → Before </body> tag) -->
+<style>
+.case-video{display:block;width:100%;height:auto;aspect-ratio:1920/1360;object-fit:cover;background:#0A161A;pointer-events:none}
+.case-video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
+.case-video::-webkit-media-controls{display:none!important}
+</style>
+<script>
+(() => {
+  // a video loads and plays only when its block is near the screen, and pauses when it leaves
+  const vids = document.querySelectorAll('video.case-video[data-src]');
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) {
+      if (!v.getAttribute('src')) { v.src = v.dataset.src; v.load(); }
+      v.muted = true;
+      const p = v.play(); if (p) p.catch(() => {});
+    } else if (!v.paused) v.pause();
+  }), { rootMargin: '400px 0px' });
+  vids.forEach(v => io.observe(v));
+})();
+</script>
