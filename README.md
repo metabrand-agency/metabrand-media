@@ -6,7 +6,7 @@ Looping videos and posters for the portfolio cases on metabrand.digital, served 
 ## Files
 - `<brand>_<screen>.mp4` — case video, 2880×2040, 60 fps, H.264, faststart. Loops are seamless.
 - `<brand>_<screen>.jpg` — poster with the same name: the first frame of the video, same aspect ratio.
-- `<brand>-embed-blocks.html` (Vanadio: `embed-blocks.html`) — embed code for each block of a case page, in page order.
+- `<brand>-embed-blocks.html` (Vanadio: `embed-blocks.html`) — embed code for each block of a case page, in page order: omnimatrix, qorelo, sasono, vanadio.
 - `embed-global.html` — the shared style and script (already installed site-wide in Webflow).
 
 ## Embed format
