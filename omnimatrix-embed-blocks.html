@@ -1,81 +1,51 @@
-<!-- OmniMatrix: one Embed element per block. Style and script — from embed-global.html (once per page). -->
+<!-- OmniMatrix case: one Embed element per block, in page order.
+     The file name appears once, in the poster URL: name.jpg is the poster, name.mp4 is the video (added by the site script).
+     A block with a different aspect ratio gets style="aspect-ratio:W/H". Style and script live in the site custom code (see embed-global.html). -->
 
-<!-- Промо -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_promo.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_promo.mp4"></video>
+<!-- Promo (top of the case) -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_promo.jpg"></video>
 
-<!-- Шрифт PX Grotesk -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_font.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_font.mp4"></video>
+<!-- Logo drawing -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_logodraw.jpg"></video>
 
-<!-- Логотип -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_logo.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_logo.mp4"></video>
+<!-- Pixel blocks -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_blocks.jpg"></video>
 
-<!-- Отрисовка логотипа -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_logodraw.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_logodraw.mp4"></video>
+<!-- PX Grotesk typeface -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_font.jpg"></video>
 
-<!-- Пиксельные блоки -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_blocks.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_blocks.mp4"></video>
+<!-- Poster -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_poster.jpg"></video>
 
-<!-- Иконки -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_icons.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_icons.mp4"></video>
+<!-- Icons -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_icons.jpg"></video>
 
-<!-- Карточки с цифрами -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_stats.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_stats.mp4"></video>
+<!-- Envelopes -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_envelopes.jpg"></video>
 
-<!-- Конверты -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_envelopes.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_envelopes.mp4"></video>
+<!-- Wall posters -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_wall.jpg"></video>
 
-<!-- Соцсети (колонки карточек) -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_social.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_social.mp4"></video>
-
-<!-- Стена с постерами -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_wall.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_wall.mp4"></video>
-
-<!-- Билборд + фавиконка: на десктопе рядом, на мобильном друг под другом -->
+<!-- Billboard + favicon: side by side on desktop, stacked on mobile -->
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0">
-  <video class="case-video" muted loop playsinline preload="none" style="aspect-ratio:960/1360"
-         poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_billboard.jpg"
-         data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_billboard.mp4"></video>
-  <video class="case-video" muted loop playsinline preload="none" style="aspect-ratio:960/1360"
-         poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_favicon.jpg"
-         data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_favicon.mp4"></video>
+  <video class="case-video" style="aspect-ratio:960/1360" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_billboard.jpg"></video>
+  <video class="case-video" style="aspect-ratio:960/1360" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_favicon.jpg"></video>
 </div>
 
-<!-- Сайт в ноутбуке -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_site.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_site.mp4"></video>
+<!-- Website on a laptop -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_site.jpg"></video>
 
-<!-- Мобильная версия -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_mobile.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_mobile.mp4"></video>
+<!-- Mobile website -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_mobile.jpg"></video>
 
-<!-- Телефоны (MAIN) -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_main.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_main.mp4"></video>
+<!-- Phones (MAIN) -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_main.jpg"></video>
 
-<!-- Постер -->
-<video class="case-video" muted loop playsinline preload="none"
-       poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_poster.jpg"
-       data-src="https://metabrand-agency.github.io/metabrand-media/omnimatrix_poster.mp4"></video>
+<!-- Stats cards -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_stats.jpg"></video>
+
+<!-- Social posts -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_social.jpg"></video>
+
+<!-- Logo colourways -->
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_logo.jpg"></video>

@@ -1,27 +1,23 @@
-# Видео для кейса Vanadio — ролики, постеры и код вставки
+# Metabrand case media
 
-## Что внутри
-- 12 роликов `vanadio_*.mp4` (2880×2040, 60 fps). Цикл каждого начинается с собранного экрана, а не с пустого; стык бесшовный.
-- Постеры `vanadio_*.jpg` (1920×1360): первый кадр каждого ролика. Видны, пока видео не запустилось, и в режиме энергосбережения на iPhone.
-- `vanadio_intro.jpg` — постер для интро. **Сам файл интро добавьте свой мастер**: `vanadio-intro-v4-2880x2040-60fps.mp4`, переименовав в `vanadio_intro.mp4`.
-- `embed-global.html` — стиль и скрипт, один раз на страницу.
-- `embed-blocks.html` — по одному тегу `<video>` на каждый блок, в порядке страницы.
+Looping videos and posters for the portfolio cases on metabrand.digital, served by GitHub Pages:
+`https://metabrand-agency.github.io/metabrand-media/<file>`
 
-## 1. GitHub Pages (через браузер, ~5 минут)
-1. github.com → **New repository** → имя `metabrand-media` → **Public** → **Create repository**.
-2. На странице пустого репозитория: **uploading an existing file** → перетащите все `.mp4` и `.jpg` (вместе с `vanadio_intro.mp4`) → **Commit changes**. Лимит браузерной загрузки — 25 МБ на файл, наши меньше.
-3. **Settings → Pages** → Source: **Deploy from a branch**, Branch: **main**, папка **/ (root)** → **Save**.
-4. Через 1–2 минуты появится адрес `https://ВАШ-ЛОГИН.github.io/metabrand-media/`. Проверьте: `…/vanadio_cover.jpg` должен открыться в браузере.
+## Files
+- `<brand>_<screen>.mp4` — case video, 2880×2040, 60 fps, H.264, faststart. Loops are seamless.
+- `<brand>_<screen>.jpg` — poster with the same name: the first frame of the video, same aspect ratio.
+- `<brand>-embed-blocks.html` (Vanadio: `embed-blocks.html`) — embed code for each block of a case page, in page order.
+- `embed-global.html` — the shared style and script (already installed site-wide in Webflow).
 
-## 2. Код
-1. В `embed-blocks.html` замените `USERNAME` на ваш логин (или организацию) GitHub.
-2. Webflow → страница кейса → **Page settings → Custom code → Before </body> tag** → вставьте содержимое `embed-global.html`.
-3. Каждый Background Video замените элементом **Embed** с соответствующим тегом из `embed-blocks.html`. Размер блока задаёт сам тег (пропорция 1920:1360), ширину — родительский контейнер.
-4. Опубликуйте и проверьте на Mac (Safari и Chrome) и на iPhone.
+## Embed format
+```html
+<video class="case-video" muted loop playsinline poster="https://metabrand-agency.github.io/metabrand-media/omnimatrix_promo.jpg"></video>
+```
+The file name appears once, in the poster URL. The site script takes the video from the same name (`.jpg` → `.mp4`).
+For another aspect ratio add `style="aspect-ratio:960/1360"`. An explicit `data-src` overrides the video URL.
 
-## Как это работает
-- Ролик начинает загружаться, только когда блок подъезжает к экрану (за 400 px), и ставится на паузу, когда уходит. 13 роликов не грузятся разом.
-- Файлы собраны с faststart: воспроизведение начинается после первой порции данных, не после всего файла.
-- `muted` + `playsinline` + `autoplay` из скрипта — условие автозапуска на iPhone. GitHub Pages отдаёт файлы по частям (Range), без этого Safari видео не играет.
-- В режиме энергосбережения iPhone видео не запустится — будет виден постер, системная кнопка «плей» скрыта стилем.
-- Позже можно переехать на Vimeo/R2/Bunny: меняется только адрес в `data-src` и `poster`.
+## How it works
+- A video starts loading only when its block is about 400 px from the screen and pauses when it leaves, so a case page never loads all videos at once.
+- `muted` + `playsinline` + play() from the script is what lets the video autoplay on iPhone. GitHub Pages serves byte ranges, which Safari needs.
+- In iPhone Low Power Mode the video does not start; the poster stays visible and the system play button is hidden.
+- When replacing a file, give it a new name (e.g. `_2`) so browsers and the CDN do not serve the cached one.

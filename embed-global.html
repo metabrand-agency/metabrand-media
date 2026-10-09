@@ -1,12 +1,22 @@
-<!-- Metabrand case videos: one block for the whole page (Page settings → Custom code → Before </body> tag) -->
+<!-- Metabrand case videos. Already installed site-wide in Webflow (Site settings → Custom code): the style in Head, the script before </body>. -->
 <style>
+html{scrollbar-gutter:stable}
 .case-video{display:block;width:100%;height:auto;aspect-ratio:1920/1360;object-fit:cover;background:#0A161A;pointer-events:none}
 .case-video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
 .case-video::-webkit-media-controls{display:none!important}
 </style>
 <script>
 (() => {
-  // a video loads and plays only when its block is near the screen, and pauses when it leaves
+  // Case videos. Embed: <video class="case-video" muted loop playsinline poster=".../name.jpg"></video>
+  // The video file is taken from the poster URL (name.jpg -> name.mp4) unless data-src is set.
+  document.querySelectorAll('video.case-video').forEach(v => {
+    const p = v.getAttribute('poster') || '';
+    if (!v.dataset.src && /\.jpe?g$/i.test(p)) v.dataset.src = p.replace(/\.jpe?g$/i, '.mp4');
+    v.muted = true; v.loop = true; v.playsInline = true;
+    v.setAttribute('muted', ''); v.setAttribute('loop', ''); v.setAttribute('playsinline', '');
+    if (!v.hasAttribute('preload')) v.preload = 'none';
+  });
+  // A video loads and plays only when its block is near the screen, and pauses when it leaves.
   const vids = document.querySelectorAll('video.case-video[data-src]');
   const io = new IntersectionObserver(entries => entries.forEach(e => {
     const v = e.target;
