@@ -1,8 +1,10 @@
 <!-- Metabrand case videos. Installed site-wide in Webflow (Site settings -> Custom code): the style in Head, the script in Footer.
-     Phones (up to 767 px) load name_m.mp4, the 1080 px mobile version made by mobile.py; a missing one falls back to name.mp4.
-     window.mbSrc(url) gives the right file for this screen (used by the SimilarWorks script for "More works" cards).
+     Light version name_m.mp4 (1080 px, made by mobile.py) on phones and wherever a video is shown at up to 1280 device
+     pixels (tablet cards, Reading view); a missing one falls back to name.mp4. Videos play only while on screen and are
+     unloaded more than a screen away. window.mbWatch(video) is used by Reading view (footer Meta* Idea script) and
+     SimilarWorks 1.4.0 ("More works" cards).
      Related registered site scripts: CaseVideoExpand 1.2.0 (wide blocks grow to full width on scroll; blocks taller than
-     wide are skipped, so vertical videos are not cropped) and SimilarWorks 1.3.0 ("More works" cards). Copies: site-scripts/. -->
+     wide are skipped, so vertical videos are not cropped) and SimilarWorks 1.4.0 ("More works" cards). Copies: site-scripts/. -->
 <style>
 html{scrollbar-gutter:stable}
 .case-video{display:block;width:100%;height:auto;aspect-ratio:1920/1360;object-fit:cover;background:#0A161A;pointer-events:none}
@@ -15,20 +17,57 @@ html{scrollbar-gutter:stable}
 (() => {
   // Case videos. Embed: <video class="case-video" muted loop playsinline poster=".../name.jpg"></video>
   // The video file is taken from the poster URL (name.jpg -> name.mp4) unless data-src is set.
-  // Phones (up to 767 px wide) get the mobile version name_m.mp4 (1080 px wide); if it is missing, the full file loads.
+  // Light version name_m.mp4 (1080 px wide) on phones and wherever the video is shown at up to 1280 device pixels
+  // (cards on tablets, Reading view); if it is missing, the full file loads.
+  // A video starts loading half a screen before it comes into view, plays only while it is on screen and is
+  // unloaded when it is more than a screen away. The poster is also the background, so the frame is never empty.
+  // window.mbWatch(video) adds a video created later (Reading view, "More works" cards).
   const BASE = 'https://metabrand-agency.github.io/metabrand-media/';
   const clean = s => (s || '').trim().replace(/\.(mp4|jpe?g)$/i, '');
   const PHONE = !!window.matchMedia && matchMedia('(max-width: 767px)').matches;
-  window.mbSrc = u => PHONE && /\.mp4$/i.test(u) && !/_m\.mp4$/i.test(u) ? u.replace(/\.mp4$/i, '_m.mp4') : u;
+  const isFull = u => /\.mp4$/i.test(u || '') && !/_m\.mp4$/i.test(u);
+  const lite = u => u.replace(/\.mp4$/i, '_m.mp4');
+  window.mbSrc = u => PHONE && isFull(u) ? lite(u) : u;
+  const pick = v => {
+    const u = v.dataset.src;
+    if (!isFull(u) || v.dataset.full) return u;
+    const w = v.getBoundingClientRect().width * (window.devicePixelRatio || 1);
+    return PHONE || (w > 0 && w <= 1280) ? lite(u) : u;
+  };
+  const bg = v => {
+    const p = v.getAttribute('poster');
+    if (p && !v.style.backgroundImage) {
+      v.style.backgroundImage = 'url("' + p + '")';
+      v.style.backgroundSize = 'cover';
+      v.style.backgroundPosition = 'center';
+    }
+  };
+  const want = new WeakSet();
+  const load = v => {
+    if (!v.getAttribute('src') && v.dataset.src) { v.preload = 'auto'; v.src = pick(v); }
+  };
+  const unload = v => {
+    want.delete(v);
+    if (v.getAttribute('src')) { v.pause(); v.removeAttribute('src'); v.load(); }
+  };
+  const near = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) load(e.target); }), { rootMargin: '50% 0px' });
+  const show = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? mbPlay(e.target) : mbPause(e.target)));
+  const keep = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) unload(e.target); }), { rootMargin: '100% 0px' });
+  window.mbPlay = v => {
+    want.add(v); bg(v); load(v); keep.observe(v);
+    v.muted = true;
+    const p = v.play(); if (p) p.catch(() => {});
+  };
+  window.mbPause = v => { want.delete(v); if (!v.paused) v.pause(); };
+  window.mbWatch = v => { if (!v.dataset.src) return; bg(v); [near, show, keep].forEach(o => o.observe(v)); };
+  // A missing light version: load the full file instead
   document.addEventListener('error', e => {
     const v = e.target;
     const s = v && v.tagName === 'VIDEO' ? v.getAttribute('src') || '' : '';
     if (!/_m\.mp4$/i.test(s)) return;
-    const full = s.replace(/_m\.mp4$/i, '.mp4');
-    if (v.dataset.src) v.dataset.src = full;
-    v.src = full; v.load();
-    const r = v.getBoundingClientRect();
-    if (r.bottom > -400 && r.top < innerHeight + 400) { const p = v.play(); if (p) p.catch(() => {}); }
+    v.dataset.full = '1';
+    v.src = s.replace(/_m\.mp4$/i, '.mp4');
+    if (want.has(v)) { const p = v.play(); if (p) p.catch(() => {}); }
   }, true);
   // Case Video component: data-name / data-ratio on .case-video-box
   document.querySelectorAll('.case-video-box[data-name]').forEach(box => {
@@ -48,20 +87,10 @@ html{scrollbar-gutter:stable}
     if (r) v.style.aspectRatio = r;
     const p = v.getAttribute('poster') || '';
     if (!v.dataset.src && /\.jpe?g$/i.test(p)) v.dataset.src = p.replace(/\.jpe?g$/i, '.mp4');
-    if (v.dataset.src) v.dataset.src = mbSrc(v.dataset.src);
     v.muted = true; v.loop = true; v.playsInline = true;
     v.setAttribute('muted', ''); v.setAttribute('loop', ''); v.setAttribute('playsinline', '');
     if (!v.hasAttribute('preload')) v.preload = 'none';
   });
-  const vids = document.querySelectorAll('video.case-video[data-src]');
-  const io = new IntersectionObserver(entries => entries.forEach(e => {
-    const v = e.target;
-    if (e.isIntersecting) {
-      if (!v.getAttribute('src')) { v.src = v.dataset.src; v.load(); }
-      v.muted = true;
-      const p = v.play(); if (p) p.catch(() => {});
-    } else if (!v.paused) v.pause();
-  }), { rootMargin: '400px 0px' });
-  vids.forEach(v => io.observe(v));
+  document.querySelectorAll('video.case-video[data-src]').forEach(mbWatch);
 })();
 </script>
