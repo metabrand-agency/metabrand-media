@@ -15,8 +15,8 @@
     ['flip-1.0.0.js', 'a.mb-logo'],         /* About, "Startups we launched": a logo card turns over and plays the case video */
     ['marquee-1.0.0.js', '.logos-wrapper'], /* logo carousels: stop on a logo, "Case Study" link under it */
     ['favicon-1.0.0.js'],                   /* browser tab: the star mark in the favicon makes a half turn every few seconds */
-    ['blocks-1.0.1.js', '.mb-blk']          /* Approach, What you can expect: the picture zooms in its frame, a note shows under it,
-                                               the heading comes down to the picture */
+    ['blocks-1.0.2.js', '.mb-blk']          /* Approach, What you can expect: the picture zooms in its frame, a note shows under it,
+                                               the heading comes down to the picture, the number moves up */
   ].forEach(function (f) {
     if (f[1] && !document.querySelector(f[1])) return;
     var s = document.createElement('script');
