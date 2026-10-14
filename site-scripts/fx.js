@@ -9,7 +9,8 @@
     ['fill-1.0.0.js'],                      /* single pill buttons: the hover color flows in like a liquid */
     ['faces-1.5.0.js', '[data-mb-faces]'],  /* home, "Who we are": team photos after the heading, confetti on hover */
     ['logo-2.0.0.js', '.w-nav-brand'],      /* header logo: small still 3D figures pop out of it on hover */
-    ['arrows-1.0.0.js', '.ind-arrow']       /* industry rows: the arrow runs out to the right and back in from the left */
+    ['arrows-1.0.0.js', '.ind-arrow'],      /* industry rows: the arrow runs out to the right and back in from the left */
+    ['stats-1.0.0.js', '.mb-stat']          /* About: the big numbers roll in like an odometer */
   ].forEach(function (f) {
     if (f[1] && !document.querySelector(f[1])) return;
     var s = document.createElement('script');
