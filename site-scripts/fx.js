@@ -5,6 +5,7 @@
 (function () {
   var BASE = 'https://metabrand-agency.github.io/metabrand-media/site-scripts/';
   [
+    ['tweaks-1.0.0.js'],                    /* small style fixes: menu lines on phones */
     ['fill-1.0.0.js'],                      /* single pill buttons: the hover color flows in like a liquid */
     ['faces-1.3.0.js', '[data-mb-faces]'],  /* home, "Who we are": team photos after the heading, confetti on hover */
     ['logo-2.0.0.js', '.w-nav-brand'],      /* header logo: small still 3D figures pop out of it on hover */
