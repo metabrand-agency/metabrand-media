@@ -12,7 +12,7 @@
      k = its strength, right = color of the strip on the right (white by default) */
   var LOOKS = {
     saas: { accent: [0.05, 0.1, 1] },                                       // chrome, electric blue
-    fintech: { metal: 0xc29a58, rough: 0.22, accent: [0, 0.75, 0.38], k: 10 }, // gold, emerald light
+    fintech: { accent: [1, 1, 1], k: 6 },                                   // plain chrome, white light only
     tech: { accent: [0, 0.72, 1] },                                         // chrome, cyan
     b2b: { metal: 0x5c5c64, rough: 0.34, accent: [1, 0.4, 0.04] },          // satin graphite, amber
     rebrand: { accent: [1, 0.08, 0.66], right: [0, 0.7, 1] },              // chrome, magenta and cyan
