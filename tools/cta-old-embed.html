@@ -1,0 +1,128 @@
+<script>
+(() => {
+  const heading = document.querySelector('[data-project-heading="true"]');
+  if (!heading) return;
+
+  const english = {
+    text: "Let’s discuss your project!",
+    lang: "en",
+    dir: "ltr"
+  };
+
+  const groups = [
+    [
+      {
+        text: "Lass uns über dein Projekt sprechen!",
+        lang: "de",
+        dir: "ltr"
+      },
+      {
+        text: "¡Hablemos de tu proyecto!",
+        lang: "es",
+        dir: "ltr"
+      },
+      {
+        text: "让我们聊聊你的项目！",
+        lang: "zh",
+        dir: "ltr"
+      }
+    ],
+    [
+      {
+        text: "Parlons de votre projet !",
+        lang: "fr",
+        dir: "ltr"
+      },
+      {
+        text: "あなたのプロジェクトについて話しましょう！",
+        lang: "ja",
+        dir: "ltr"
+      },
+      {
+        text: "لنتحدث عن مشروعك!",
+        lang: "ar",
+        dir: "rtl"
+      }
+    ]
+  ];
+
+  const ENGLISH_HOLD = 5000;
+  const LANGUAGE_SLOT = 1000;
+  const MORPH_DURATION = 700;
+
+  const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+  const segmenter = "Segmenter" in Intl
+    ? new Intl.Segmenter(undefined, { granularity: "grapheme" })
+    : null;
+
+  const splitText = text =>
+    segmenter
+      ? [...segmenter.segment(text)].map(item => item.segment)
+      : Array.from(text);
+
+  async function morphTo(target) {
+    const from = splitText(heading.textContent);
+    const to = splitText(target.text);
+    const length = Math.max(from.length, to.length);
+
+    const characters = Array.from(
+      { length },
+      (_, index) => from[index] || ""
+    );
+
+    // For RTL (Arabic), walk the indexes in reverse
+    // so the morph still reads left to right on screen.
+    const indexes = Array.from({ length }, (_, index) => index);
+    if (target.dir === "rtl") indexes.reverse();
+
+    heading.lang = target.lang;
+    heading.dir = target.dir;
+
+    const stepDuration = MORPH_DURATION / Math.max(length, 1);
+
+    for (const index of indexes) {
+      characters[index] = to[index] || "";
+      heading.textContent = characters.join("");
+      await wait(stepDuration);
+    }
+
+    heading.textContent = target.text;
+  }
+
+  async function showLanguage(target) {
+    const startedAt = performance.now();
+
+    await morphTo(target);
+
+    const remaining = LANGUAGE_SLOT - (performance.now() - startedAt);
+    if (remaining > 0) await wait(remaining);
+  }
+
+  async function run() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      heading.textContent = english.text;
+      return;
+    }
+
+    heading.textContent = english.text;
+    heading.lang = english.lang;
+    heading.dir = english.dir;
+
+    let groupIndex = 0;
+
+    while (heading.isConnected) {
+      await wait(ENGLISH_HOLD);
+
+      for (const language of groups[groupIndex]) {
+        await showLanguage(language);
+      }
+
+      await morphTo(english);
+      groupIndex = (groupIndex + 1) % groups.length;
+    }
+  }
+
+  run();
+})();
+</script>
