@@ -6,8 +6,9 @@
   var BASE = 'https://metabrand-agency.github.io/metabrand-media/site-scripts/';
   [
     ['fill-1.0.0.js'],                      /* single pill buttons: the hover color flows in like a liquid */
-    ['faces-1.2.0.js', '[data-mb-faces]'],  /* home, "Who we are": team photos after the heading, confetti on hover */
-    ['logo-1.0.0.js', '.w-nav-brand']       /* header logo: small 3D figures fly out of it on hover */
+    ['faces-1.3.0.js', '[data-mb-faces]'],  /* home, "Who we are": team photos after the heading, confetti on hover */
+    ['logo-2.0.0.js', '.w-nav-brand'],      /* header logo: small still 3D figures pop out of it on hover */
+    ['arrows-1.0.0.js', '.ind-arrow']       /* industry rows: the arrow runs out to the right and back in from the left */
   ].forEach(function (f) {
     if (f[1] && !document.querySelector(f[1])) return;
     var s = document.createElement('script');

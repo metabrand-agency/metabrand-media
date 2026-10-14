@@ -50,6 +50,7 @@ window.render = function (spec) {
   var half = f.r * sc / 0.92;
   camera.position.set(0, 0, half / Math.tan(15 * D)); camera.lookAt(0, 0, 0); camera.updateProjectionMatrix();
   var axis = new THREE.Vector3(spec.axis[0], spec.axis[1], spec.axis[2]).normalize(), out = [];
+  if (spec.poses) { spec.poses.forEach(function (ps) { root.quaternion.copy(q(ps[0], ps[1], ps[2])); renderer.render(scene, camera); out.push(canvas.toDataURL('image/png')); }); geo.dispose(); mat.dispose(); return out; }
   for (var i = 0; i < FR; i++) {
     var t = (i / FR) * Math.PI * 2;
     if (spec.wob) root.quaternion.copy(q(spec.wob * Math.sin(t), spec.wob * Math.cos(t), 0).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 0, 1), t / 8)));
