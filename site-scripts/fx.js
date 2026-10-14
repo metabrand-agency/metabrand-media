@@ -5,7 +5,7 @@
 (function () {
   var BASE = 'https://metabrand-agency.github.io/metabrand-media/site-scripts/';
   [
-    ['tweaks-1.0.0.js'],                    /* small style fixes: menu lines on phones */
+    ['tweaks-1.0.1.js'],                    /* small style fixes: menu lines on phones, line under drop-down menu items */
     ['fill-1.0.0.js'],                      /* single pill buttons: the hover color flows in like a liquid */
     ['faces-1.5.0.js', '[data-mb-faces]'],  /* home, "Who we are": team photos after the heading, confetti on hover */
     ['card-1.0.5.js', '.w-nav-brand'],      /* header logo: an agency card with dry facts drops under it on hover
