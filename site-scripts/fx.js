@@ -13,7 +13,7 @@
     ['arrows-1.0.0.js', '.ind-arrow'],      /* industry rows: the arrow runs out to the right and back in from the left */
     ['stats-1.0.1.js', '.mb-stat'],         /* About: the big numbers roll in like an odometer */
     ['flip-1.0.0.js', 'a.mb-logo'],         /* About, "Startups we launched": a logo card turns over and plays the case video */
-    ['marquee-1.0.0.js', '.logos-wrapper']  /* logo carousels: stop on a logo, "Case Study" link under it */
+    ['marquee-1.0.1.js', '.logos-wrapper']  /* logo carousels: stop on a logo, "Case Study →" link under it, no picture trail over it */
   ].forEach(function (f) {
     if (f[1] && !document.querySelector(f[1])) return;
     var s = document.createElement('script');
