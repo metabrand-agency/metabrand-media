@@ -8,7 +8,8 @@
     ['tweaks-1.0.0.js'],                    /* small style fixes: menu lines on phones */
     ['fill-1.0.0.js'],                      /* single pill buttons: the hover color flows in like a liquid */
     ['faces-1.5.0.js', '[data-mb-faces]'],  /* home, "Who we are": team photos after the heading, confetti on hover */
-    ['logo-2.0.0.js', '.w-nav-brand'],      /* header logo: small still 3D figures pop out of it on hover */
+    ['card-1.0.0.js', '.w-nav-brand'],      /* header logo: an agency card with dry facts drops under it on hover
+                                               (replaced logo-2.0.0.js, the 3D figures flying out of the logo) */
     ['arrows-1.0.0.js', '.ind-arrow'],      /* industry rows: the arrow runs out to the right and back in from the left */
     ['stats-1.0.1.js', '.mb-stat'],         /* About: the big numbers roll in like an odometer */
     ['flip-1.0.0.js', 'a.mb-logo'],         /* About, "Startups we launched": a logo card turns over and plays the case video */
