@@ -1,0 +1,64 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;background:#888}</style></head><body>
+<canvas id="c" width="160" height="160"></canvas>
+<script src="three.min.js"></script>
+<script>
+var D = Math.PI / 180, SZ = 160, FR = 24;
+var canvas = document.getElementById('c');
+var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(SZ, SZ, false);
+renderer.outputEncoding = THREE.sRGBEncoding; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1;
+renderer.setClearColor(0x000000, 0);
+var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+function envFor(look) {
+  var env = new THREE.Scene();
+  env.add(new THREE.Mesh(new THREE.SphereGeometry(20, 32, 16), new THREE.MeshBasicMaterial({ color: 0x020203, side: THREE.BackSide })));
+  function panel(w, h, x, y, z, c, k) {
+    var m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ side: THREE.DoubleSide }));
+    m.material.color.setRGB(c[0] * k, c[1] * k, c[2] * k); m.position.set(x, y, z); m.lookAt(0, 0, 0); env.add(m);
+  }
+  var W = [1, 1, 1];
+  [[18, 5, -2, 9, 1, W, 4], [18, 4, 0, -9, 1, [0.9, 0.9, 1], 2.5], [4, 18, 9, 1, 1, look.right || W, look.right ? 8 : 4], [8, 14, -8, -2, -5, look.accent, look.k || 14]]
+    .forEach(function (p) { panel.apply(null, p); });
+  var pm = new THREE.PMREMGenerator(renderer);
+  return pm.fromScene(env, 0.02).texture;
+}
+function q(x, y, z) { return new THREE.Quaternion().setFromEuler(new THREE.Euler(x * D, y * D, (z || 0) * D, 'XYZ')); }
+function V(x, y, z) { return new THREE.Vector3(x, y, z); }
+var TUBE = 0.16, OPEN = 5;
+function around(angles, open) { return angles.map(function (t, i) { return { p: V(0, 0, -0.003 * i), q: q(0, 0, t).multiply(q(90 - (open || 0), 0, 0)) }; }); }
+var FORMS = {
+  star: { rings: around([0, 45, 90, 135], OPEN), ball: 0, r: 1 + TUBE },
+  idea: { rings: around([-14, 8, 172, 194]), ball: 0.6, r: 1 + TUBE },
+  ring: { rings: [{ p: V(0, 0, 0), q: new THREE.Quaternion() }], ball: 0.3, ballAt: V(0.7071, 0.7071, 0), r: 1 + TUBE },
+  plus: { rings: around([0, 90]), ball: 0, r: 1 + TUBE },
+  chain: (function () {
+    var a = -24, s = 0.66, dx = s * Math.cos(a * D), dy = s * Math.sin(a * D);
+    return { rings: [{ p: V(-dx, -dy, 0), q: q(0, 0, a) }, { p: V(dx, dy, 0), q: q(0, 0, a).multiply(q(90, 0, 0)) }], ball: 0, r: 0.66 + 1 + TUBE, sc: 0.8 };
+  })()
+};
+window.render = function (spec) {
+  var look = spec.look, scene = new THREE.Scene();
+  scene.environment = envFor(look);
+  var mat = new THREE.MeshPhysicalMaterial({ color: new THREE.Color(look.metal || 0x7c7c84), metalness: 1, roughness: look.rough != null ? look.rough : 0.2, clearcoat: 1, clearcoatRoughness: 0.06 });
+  var f = FORMS[spec.form], root = new THREE.Group(), body = new THREE.Group();
+  scene.add(root); root.add(body);
+  var geo = new THREE.TorusGeometry(1, TUBE, 32, 160);
+  f.rings.forEach(function (r) { var m = new THREE.Mesh(geo, mat); m.position.copy(r.p); m.quaternion.copy(r.q); body.add(m); });
+  if (f.ball) { var b = new THREE.Mesh(new THREE.SphereGeometry(f.ball, 48, 32), mat); if (f.ballAt) b.position.copy(f.ballAt); body.add(b); }
+  var sc = f.sc || 1; body.scale.setScalar(sc);
+  body.quaternion.copy(q(spec.base[0], spec.base[1], spec.base[2]));
+  var half = f.r * sc / 0.92;
+  camera.position.set(0, 0, half / Math.tan(15 * D)); camera.lookAt(0, 0, 0); camera.updateProjectionMatrix();
+  var axis = new THREE.Vector3(spec.axis[0], spec.axis[1], spec.axis[2]).normalize(), out = [];
+  for (var i = 0; i < FR; i++) {
+    var t = (i / FR) * Math.PI * 2;
+    if (spec.wob) root.quaternion.copy(q(spec.wob * Math.sin(t), spec.wob * Math.cos(t), 0).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 0, 1), t / 8)));
+    else root.quaternion.setFromAxisAngle(axis, t);
+    renderer.render(scene, camera);
+    out.push(canvas.toDataURL('image/png'));
+  }
+  geo.dispose(); mat.dispose();
+  return out;
+};
+window.ready = true;
+</script></body></html>
