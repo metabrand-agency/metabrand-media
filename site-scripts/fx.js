@@ -13,7 +13,7 @@
     ['arrows-1.0.0.js', '.ind-arrow'],      /* industry rows: the arrow runs out to the right and back in from the left */
     ['stats-1.0.1.js', '.mb-stat'],         /* About: the big numbers roll in like an odometer */
     ['flip-1.0.0.js', 'a.mb-logo'],         /* About, "Startups we launched": a logo card turns over and plays the case video */
-    ['marquee-1.0.1.js', '.logos-wrapper'], /* logo carousels: stop on a logo, "Case Study" link under it */
+    ['marquee-1.0.2.js', '.logos-wrapper'], /* logo carousels: stop on a logo, "Case Study" link under it */
     ['favicon-1.0.0.js'],                   /* browser tab: the star mark in the favicon makes a half turn every few seconds */
     ['blocks-1.0.2.js', '.mb-blk'],         /* Approach, What you can expect: the picture zooms in its frame, a note shows under it,
                                                the heading comes down to the picture, the number moves up */
