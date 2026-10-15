@@ -14,6 +14,7 @@
     ['stats-1.0.1.js', '.mb-stat'],         /* About: the big numbers roll in like an odometer */
     ['flip-1.0.0.js', 'a.mb-logo'],         /* About, "Startups we launched": a logo card turns over and plays the case video */
     ['marquee-1.0.2.js', '.logos-wrapper'], /* logo carousels: stop on a logo, "Case Study" link under it */
+    ['trail-1.0.0.js', '.section.hero .paragraph.bot'], /* home hero: the picture trail keeps above "Trusted by" and the logos */
     ['favicon-1.0.0.js'],                   /* browser tab: the star mark in the favicon makes a half turn every few seconds */
     ['blocks-1.0.2.js', '.mb-blk'],         /* Approach, What you can expect: the picture zooms in its frame, a note shows under it,
                                                the heading comes down to the picture, the number moves up */
