@@ -16,6 +16,7 @@
     ['marquee-1.0.3.js', '.logos-wrapper'], /* logo carousels: stop on a logo, "Case Study" link under it */
     ['trail-1.0.0.js', '.section.hero .paragraph.bot'], /* home hero: the picture trail keeps above "Trusted by" and the logos */
     ['reviews-1.0.0.js', '.mb-rv-slide'],  /* client reviews: the brand mark turns over to the person's photo on hover; photo always on case cards */
+    ['authors-1.0.0.js', '.fs-toc_richtext'], /* blog articles: the author block under the article shows the author's photo and bio (Dmitry), else Metabrand Team */
     ['favicon-1.0.0.js'],                   /* browser tab: the star mark in the favicon makes a half turn every few seconds */
     ['blocks-1.0.2.js', '.mb-blk'],         /* Approach, What you can expect: the picture zooms in its frame, a note shows under it,
                                                the heading comes down to the picture, the number moves up */
