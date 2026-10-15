@@ -17,7 +17,8 @@
     ['favicon-1.0.0.js'],                   /* browser tab: the star mark in the favicon makes a half turn every few seconds */
     ['blocks-1.0.2.js', '.mb-blk'],         /* Approach, What you can expect: the picture zooms in its frame, a note shows under it,
                                                the heading comes down to the picture, the number moves up */
-    ['cta-1.0.0.js', '[data-project-heading]'] /* yellow CTA: "Let's discuss your project!" changes language word by word */
+    ['cta-1.0.0.js', '[data-project-heading]'], /* yellow CTA: "Let's discuss your project!" changes language word by word */
+    ['cards-1.0.0.js', '.image-10']         /* blog article cards: smooth cover zoom on hover, looping video covers from the CMS */
   ].forEach(function (f) {
     if (f[1] && !document.querySelector(f[1])) return;
     var s = document.createElement('script');
