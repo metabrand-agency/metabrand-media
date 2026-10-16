@@ -1,14 +1,14 @@
 <style>
-.mbp{--mbp-grey:#6d6d6d;--mbp-line:#e6e6e6;font-family:Graphik,Arial,sans-serif}
+.mbp{--mbp-grey:#6d6d6d;--mbp-line:#000;font-family:Graphik,Arial,sans-serif;padding-bottom:64px}
 .mbp-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:64px;row-gap:72px;margin-top:72px}
 .mbp-item{display:flex;flex-direction:column;border-top:1px solid var(--mbp-line);padding-top:28px}
 .mbp-num{font-size:14px;line-height:18px;color:var(--mbp-grey);margin-bottom:28px}
 .mbp-h{margin:0 0 14px;font-size:26px;line-height:32px;font-weight:400;letter-spacing:-.4px;color:#000}
 .mbp-p{margin:0;font-size:18px;line-height:26px;color:#000;max-width:30em}
 .mbp-p a{color:#000;text-decoration:underline;text-underline-offset:2px}
-.mbp-case{display:flex;align-items:flex-start;gap:16px;margin-top:32px;padding:12px;background:#f5f5f5;text-decoration:none;color:#000;transition:background-color .3s ease}
-.mbp-case:hover{background:#eeeeee}
-.mbp-thumb{flex:none;width:72px;height:72px;overflow:hidden;background:#e8e8e8}
+.mbp-case{display:flex;align-items:flex-start;gap:16px;margin-top:32px;padding:12px;background:#fff;text-decoration:none;color:#000;transition:box-shadow .3s ease}
+.mbp-case:hover{box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.mbp-thumb{flex:none;width:72px;height:72px;overflow:hidden;background:#ececec}
 .mbp-thumb .case-video{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .6s cubic-bezier(.2,.75,.25,1)}
 .mbp-case:hover .mbp-thumb .case-video{transform:scale(1.08)}
 .mbp-case-t{display:flex;flex-direction:column;gap:4px;padding-top:1px}
@@ -22,13 +22,13 @@
 @supports (grid-template-rows:subgrid){@media (min-width:768px){.mbp-item{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0}.mbp-case{margin-top:0}.mbp-p{margin-bottom:32px}}}
 @media (min-width:992px) and (max-width:1199px){.mbp-grid{grid-template-columns:1fr;row-gap:56px}}
 @media (max-width:991px){.mbp-grid{column-gap:40px;row-gap:56px;margin-top:56px}.mbp-h{font-size:24px;line-height:30px}}
-@media (max-width:767px){.mbp-grid{grid-template-columns:1fr;row-gap:48px;margin-top:40px}.mbp-num{margin-bottom:18px}.mbp-h{font-size:22px;line-height:28px}.mbp-p{font-size:17px;line-height:25px}.mbp-case{margin-top:24px;padding:10px;gap:14px}.mbp-deadline{margin-top:64px;flex-direction:column;align-items:flex-start}.mbp-deadline-t{font-size:22px;line-height:28px}}
+@media (max-width:767px){.mbp-grid{grid-template-columns:1fr;row-gap:48px;margin-top:40px}.mbp-num{margin-bottom:18px}.mbp-h{font-size:22px;line-height:28px}.mbp-p{font-size:17px;line-height:25px}.mbp-case{margin-top:24px;padding:10px;gap:14px}.mbp-deadline{margin-top:64px;flex-direction:column;align-items:flex-start}.mbp{padding-bottom:48px}.mbp-deadline-t{font-size:22px;line-height:28px}}
 </style>
 <div class="mbp">
 <div class="mbp-grid">
 <div class="mbp-item">
-<div class="mbp-num">Enterprise</div>
-<h3 class="mbp-h">Startup to enterprise brand transformation</h3>
+<div class="mbp-num">Scale</div>
+<h3 class="mbp-h">Startup → Enterprise</h3>
 <p class="mbp-p">Your product is ready for enterprise buyers. We make the brand ready too: the look, the language and the website of an established company.</p>
 <a class="mbp-case" href="/work/qorelo"><span class="mbp-thumb" aria-hidden="true"><video class="case-video" style="aspect-ratio:1/1" muted loop playsinline data-full="1" data-src="https://metabrand-agency.github.io/metabrand-media/qorelo_card_3_thumb.mp4" poster="https://metabrand-agency.github.io/metabrand-media/qorelo_card_3_thumb.jpg"></video></span><span class="mbp-case-t"><span class="mbp-case-name">Qorelo</span><span class="mbp-case-note">Already working with Mercedes-Benz, needed a brand for top enterprises.</span></span></a>
 </div>
