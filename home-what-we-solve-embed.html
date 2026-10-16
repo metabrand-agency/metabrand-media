@@ -4,22 +4,25 @@
 .mbp-item{display:flex;flex-direction:column;border-top:1px solid var(--mbp-line);padding-top:28px}
 .mbp-num{font-size:14px;line-height:18px;color:var(--mbp-grey);font-variant-numeric:tabular-nums;margin-bottom:28px}
 .mbp-h{margin:0 0 14px;font-size:26px;line-height:32px;font-weight:400;letter-spacing:-.4px;color:#000}
-.mbp-p{margin:0;font-size:16px;line-height:24px;color:var(--mbp-grey);max-width:30em}
+.mbp-p{margin:0;font-size:18px;line-height:26px;color:#000;max-width:30em}
 .mbp-p a{color:#000;text-decoration:underline;text-underline-offset:2px}
-.mbp-case{display:flex;align-items:flex-start;gap:16px;margin-top:32px;text-decoration:none;color:#000}
-.mbp-thumb{flex:none;width:72px;height:72px;overflow:hidden;background:#f1f1f1}
+.mbp-case{display:flex;align-items:flex-start;gap:16px;margin-top:32px;padding:12px;background:#f5f5f5;text-decoration:none;color:#000;transition:background-color .3s ease}
+.mbp-case:hover{background:#eeeeee}
+.mbp-thumb{flex:none;width:72px;height:72px;overflow:hidden;background:#e8e8e8}
 .mbp-thumb .case-video{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .6s cubic-bezier(.2,.75,.25,1)}
 .mbp-case:hover .mbp-thumb .case-video{transform:scale(1.08)}
-.mbp-case-t{display:flex;flex-direction:column;gap:4px;padding-top:2px}
+.mbp-case-t{display:flex;flex-direction:column;gap:4px;padding-top:1px}
 .mbp-case-name{font-size:14px;line-height:18px;color:#000}
-.mbp-case-name:after{content:" \2197";color:#b5b5b5;transition:color .2s ease}
-.mbp-case:hover .mbp-case-name:after{color:#000}
-.mbp-case-note{font-size:13px;line-height:18px;color:var(--mbp-grey);max-width:26em}
+.mbp-case-name:after{content:"\2192";display:inline-block;margin-left:6px;transition:transform .3s ease}
+.mbp-case:hover .mbp-case-name:after{transform:translateX(4px)}
+.mbp-case-note{font-size:12px;line-height:16px;color:var(--mbp-grey);max-width:28em}
 .mbp-deadline{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:88px;padding-top:28px;border-top:1px solid #000}
-.mbp-deadline-t{margin:0;font-size:26px;line-height:32px;font-weight:400;letter-spacing:-.4px;color:#000}
+.mbp-deadline-t{margin:0 0 8px;font-size:26px;line-height:32px;font-weight:400;letter-spacing:-.4px;color:#000}
+.mbp-deadline-s{margin:0;font-size:18px;line-height:26px;color:#000;max-width:34em}
 .mbp-deadline .button-contact{flex:none}
+@supports (grid-template-rows:subgrid){@media (min-width:768px){.mbp-item{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0}.mbp-case{margin-top:0}.mbp-p{margin-bottom:32px}}}
 @media (max-width:991px){.mbp-grid{column-gap:40px;row-gap:56px;margin-top:56px}.mbp-h{font-size:24px;line-height:30px}}
-@media (max-width:767px){.mbp-grid{grid-template-columns:1fr;row-gap:48px;margin-top:40px}.mbp-num{margin-bottom:18px}.mbp-h{font-size:22px;line-height:28px}.mbp-case{margin-top:24px}.mbp-thumb{width:64px;height:64px}.mbp-deadline{margin-top:64px;flex-direction:column;align-items:flex-start}.mbp-deadline-t{font-size:22px;line-height:28px}}
+@media (max-width:767px){.mbp-grid{grid-template-columns:1fr;row-gap:48px;margin-top:40px}.mbp-num{margin-bottom:18px}.mbp-h{font-size:22px;line-height:28px}.mbp-p,.mbp-deadline-s{font-size:17px;line-height:25px}.mbp-case{margin-top:24px;padding:10px;gap:14px}.mbp-thumb{width:64px;height:64px}.mbp-deadline{margin-top:64px;flex-direction:column;align-items:flex-start}.mbp-deadline-t{font-size:22px;line-height:28px}}
 </style>
 <div class="mbp">
 <div class="mbp-grid">
@@ -55,10 +58,10 @@
 </div>
 <div class="mbp-item">
 <div class="mbp-num">06</div>
-<h3 class="mbp-h">Rebranding after a new round</h3>
-<p class="mbp-p">New market, new product, new stage. We rebuild the brand around where the company is going next. More on <a href="/rebranding-agency">startup rebranding</a>.</p>
+<h3 class="mbp-h">Rebranding for the next stage of growth</h3>
+<p class="mbp-p">New market, new product, a wider offer. We rebuild the brand around where the company is going next. More on <a href="/rebranding-agency">startup rebranding</a>.</p>
 <a class="mbp-case" href="/work/amitron"><span class="mbp-thumb" aria-hidden="true"><video class="case-video" style="aspect-ratio:1/1" muted loop playsinline data-full="1" data-src="https://metabrand-agency.github.io/metabrand-media/amitron_card_thumb.mp4" poster="https://metabrand-agency.github.io/metabrand-media/amitron_card_thumb.jpg"></video></span><span class="mbp-case-t"><span class="mbp-case-name">Amitron</span><span class="mbp-case-note">A Dutch cybersecurity provider with 35 years behind it. As its services and partner network grew, we refreshed the whole brand system.</span></span></a>
 </div>
 </div>
-<div class="mbp-deadline"><p class="mbp-deadline-t">Hard deadline?</p><a href="#" class="button-contact black js-calendly w-button">Book a call</a></div>
+<div class="mbp-deadline"><div><p class="mbp-deadline-t">Hard deadline?</p><p class="mbp-deadline-s">We work at startup pace. We plan back from your launch or raise date and agree on what ships first.</p></div><a href="#" class="button-contact black js-calendly w-button">Book a call</a></div>
 </div>
