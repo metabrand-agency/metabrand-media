@@ -12,7 +12,7 @@
                                                (replaced logo-2.0.0.js, the 3D figures flying out of the logo) */
     ['arrows-1.0.0.js', '.ind-arrow'],      /* industry rows: the arrow runs out to the right and back in from the left */
     ['stats-1.0.1.js', '.mb-stat'],         /* About: the big numbers roll in like an odometer */
-    ['flip-1.0.0.js', 'a.mb-logo'],         /* About, "Startups we launched": a logo card turns over and plays the case video */
+    ['flip-1.0.1.js', 'a.mb-logo'],         /* About, "Startups we launched": a logo card turns over and plays the case video */
     ['marquee-1.0.3.js', '.logos-wrapper'], /* logo carousels: stop on a logo, "Case Study" link under it */
     ['trail-1.0.0.js', '.section.hero .paragraph.bot'], /* home hero: the picture trail keeps above "Trusted by" and the logos */
     ['reviews-1.1.1.js', '.mb-rv-slide'],  /* client reviews: the brand mark turns over to the person's photo on hover; on case cards the photo alone (logo if no photo) */
