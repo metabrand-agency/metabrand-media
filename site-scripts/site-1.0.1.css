@@ -1,0 +1,202 @@
+/* Metabrand site styles, moved out of Webflow Site settings > Custom code on 2026-10-17 so that every page
+   download is lighter (Webflow counts each page toward the monthly bandwidth limit). Loaded in the site head
+   as a stylesheet. Order kept: head styles first, then the footer ones. To change: add site-x.y.z.css and
+   change the file name in the site head. */
+/* ---- from site head code ---- */
+html{scrollbar-gutter:stable}
+.case-video{display:block;width:100%;height:auto;aspect-ratio:1920/1360;object-fit:cover;background:#0A161A;pointer-events:none}
+.case-video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
+.case-video::-webkit-media-controls{display:none!important}
+.case-video-label{display:none!important}
+.case-video-box>.case-video{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
+/* Card hover for cards without a Webflow interaction (new cards, "More works") */
+a.link-block:not([data-w-id]) .project_name{transition:transform .5s ease-in-out}
+a.link-block:not([data-w-id]):hover .project_name{transform:translate3d(0,-36px,0)}
+/* "More works": hidden until the similar cases are in place, then fades in */
+section:has(.heading.more) :is(.grid2,.work-grid){transition:opacity .3s ease}
+html.mw-wait section:has(.heading.more) :is(.grid2,.work-grid){opacity:0}
+/* Top menu: the underline draws in from left to right on hover and leaves to the right */
+.nav-menu:not(.drop) .w-nav-link{border-bottom:2px solid transparent;background:linear-gradient(currentColor,currentColor) no-repeat 100% 100%/0 2px;background-origin:border-box;transition:background-size .45s cubic-bezier(.65,0,.35,1),color .4s}
+.nav-menu:not(.drop) .w-nav-link:hover{border-bottom-color:transparent;background-position:0 100%;background-size:100% 2px}
+.nav-menu:not(.drop) .w-nav-link.w--current{border-bottom-color:transparent;background-size:100% 2px}
+/* Article kit (blog + startup branding guide): banners, sticky bar, team block, selected work, quieter "Next reads" */
+.mb-article .fs-toc_rich-text,.mb-article .fs-toc_richtext{min-width:0}
+.mb-cta{position:relative;z-index:30;box-sizing:border-box;background:#000;color:#fff;font-family:Graphik,Arial,sans-serif;min-height:82vh;display:flex;align-items:center;padding:120px 0}
+.mb-cta.is-inline{margin:96px 0}
+.mb-cta__in{box-sizing:border-box;width:100%;display:grid;grid-template-columns:minmax(160px,1fr) 3fr;gap:40px;padding:0 42px}
+.mb-cta__brand{margin-top:18px}
+.mb-cta__logo{display:block;width:150px;height:auto;filter:invert(1)}
+.mb-cta__about{margin-top:14px;font-size:15px;line-height:21px;color:#8c8c8c;max-width:16em}
+.mb-cta__title{margin:0 0 28px;font-size:clamp(40px,4.4vw,76px);line-height:1.1;letter-spacing:-2px;font-weight:400;color:#fff;max-width:15em}
+.mb-cta__text{margin:0 0 44px;font-size:20px;line-height:28px;color:#bdbdbd;max-width:34em}
+.mb-cta__btns{display:flex;flex-wrap:wrap;gap:10px}
+.mb-cta a.button-contact,.mb-cta-box a.button-contact,.mb-bar a.button-contact{display:inline-block;text-decoration:none;color:#000}
+.mb-cta-box a.button-contact.black{color:#fff}
+.mb-cta a.button-contact:hover,.mb-bar a.button-contact:hover{background:#fff;color:#000}
+.mb-cta a.button-contact.light:hover{background:#fff94b;color:#000}
+.mb-cta-box{background:#fff94b;color:#000;font-family:Graphik,Arial,sans-serif;padding:32px 36px;margin:48px 0;border-radius:4px}
+.mb-cta-box__text{margin:0 0 22px;font-size:22px;line-height:30px;letter-spacing:-.3px}
+.mb-cta-box .mb-row{display:flex;flex-wrap:wrap;align-items:center;gap:24px}
+.mb-cta-box .button-contact{font-size:18px;line-height:22px;padding:16px 30px}
+.mb-cta-box a.mb-more{color:#000;font-size:18px;text-decoration:underline}
+.mb-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:900;display:flex;align-items:center;gap:18px;background:#000;color:#fff;font-family:Graphik,Arial,sans-serif;border-radius:100px;padding:10px 10px 10px 26px;transform:translateY(140%);transition:transform .45s cubic-bezier(.65,0,.35,1);box-sizing:border-box;max-width:980px;margin:0 auto}
+.mb-bar.is-on{transform:none}
+.mb-bar__logo{width:96px;height:auto;filter:invert(1);flex:none}
+.mb-bar__text{flex:1;font-size:15px;line-height:20px;color:#bdbdbd}
+.mb-bar a.button-contact{font-size:17px;line-height:20px;padding:14px 26px;white-space:nowrap}
+.mb-bar__x{background:none;border:0;color:#999;font-size:22px;line-height:1;cursor:pointer;padding:8px 12px}
+.mb-team{align-items:center;margin-top:40px}
+.mb-team .image-8{background:#fff94b;object-fit:contain;padding:14px;box-sizing:border-box;flex:none}
+.mb-team__name{margin-top:0;color:#000}
+.mb-team__name span{color:#999}
+.mb-team__bio{color:#999;font-size:14px;line-height:20px;max-width:40em;margin-top:6px}
+.mb-team__bio a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.mb-team__bio a:hover{color:#000}
+.mb-work{padding-bottom:60px}
+.mb-article .section.learn{background:#fff;border-top:1px solid #e6e6e6}
+.mb-article .section.learn .div-block-26{display:none}
+.mb-article .section.learn .paragraph.approa.lear{color:#000}
+.mb-article .section.learn .heading.lear{color:#000;font-size:26px;line-height:34px;letter-spacing:-.5px}
+.mb-article .section.learn .paragraph.small.topmore.lhom{margin-top:0;color:#999;font-size:14px}
+.mb-article .section.learn .paragraph.article.lhom{color:#000;font-size:18px;line-height:24px;min-height:0;height:auto}
+.mb-article .section.learn .link-block-4{border-top:1px solid #e6e6e6;padding-top:16px}
+.mb-article .section.learn .collection-item{height:auto;min-height:0;margin-bottom:24px}
+.mb-article .section.learn .collection-list.lear{padding-bottom:72px}
+@media (max-width:767px){
+.mb-cta{min-height:0;padding:72px 0}
+.mb-cta__in{grid-template-columns:1fr;gap:28px;padding:0 20px}
+.mb-cta__brand{margin-top:0}
+.mb-cta__logo{width:120px}
+.mb-cta__about{max-width:none;font-size:14px;line-height:19px}
+.mb-cta__title{font-size:36px;letter-spacing:-1px}
+.mb-cta__text{font-size:18px;line-height:25px;margin-bottom:32px}
+.mb-cta-box{padding:24px}
+.mb-cta-box__text{font-size:19px;line-height:26px}
+.mb-bar{left:10px;right:10px;bottom:10px;padding:8px 8px 8px 18px;gap:10px;border-radius:18px}
+.mb-bar__text,.mb-bar a.mb-hide-m{display:none}
+.mb-bar__logo{width:88px;margin-right:auto}
+.mb-bar a.button-contact{font-size:15px;padding:12px 18px}
+}
+
+/* ---- from site head code ---- */
+/* Mobile layout fixes */
+@media screen and (max-width:991px){
+  /* Case cards: the name and its hover line get the full card width on one line; services and industry go on a second line below */
+  a.link-block .div-block-18>.project_name{flex:1 1 auto;min-width:0}
+  a.link-block .div-block-18 .paragraph.name{white-space:nowrap}
+  a.link-block .div-block-18>.paragraph.small{position:absolute;top:100%;left:0;margin-top:2px;padding-left:0;white-space:nowrap}
+  a.link-block .div-block-18>.paragraph.small.grey{left:auto;right:0}
+  a.link-block .work{margin-bottom:23px}
+}
+@media screen and (max-width:767px){
+  /* Open menu: logo, "Work with us" and the close icon sit exactly where the header has them; menu items line up with the logo */
+  .navbar.drop{padding:10px 20px 0}
+  .navbar.drop .nav-menu.drop{float:none;margin-left:0}
+  .navbar.drop .nav-link-work-copy.work.big.drop{padding-top:10px;font-size:16px;line-height:12px}
+  .navbar.drop .div-block-21-copy{display:flex;justify-content:center;width:30px;margin-top:6px}
+  .navbar.drop .div-block-21-copy img{margin-top:0}
+  /* Footer is taller than a phone screen, so it scrolls in normally instead of being revealed from under the page */
+  .wrapper-sticky.footer{min-height:0}
+  .wrapper-sticky.footer .container-7{position:relative;height:auto;min-height:0}
+  /* Page heroes (Services, About, Industries): same 20px side margin as the header */
+  body .container-wrapper.top.sasono.dark.about{margin-left:20px;margin-right:20px}
+  /* Section titles above wide card grids line up with the page text */
+  .container.wide .h2-small{padding-left:10px}
+  /* Case cards: the hover moves the name up by 36px, so the two lines are 36px apart and the hover line lands exactly in place of the name */
+  a.link-block .div-block-18{margin-bottom:0}
+  a.link-block .work{margin-bottom:33px}
+  a.link-block .div-block-18 .paragraph.name{line-height:36px;margin-top:-10px}
+  /* Blog articles and guides: body text stays inside the page margins */
+  .fs-toc_example{align-items:stretch}
+  .fs-toc_rich-text{width:100%}
+  .div-block-97 .div-block-96,.div-block-98 .div-block-96{width:100%}
+  /* Home "Who we are" icons: offset the empty space inside the drawings */
+  .div-block-28.hom .icons{margin-left:-14px}
+}
+@media screen and (min-width:768px) and (max-width:991px){
+  /* Open menu on tablets: logo, "Work with us" and the close icon match the header */
+  .navbar.drop{padding-top:24px}
+  .navbar.drop .image-copy{width:140px;margin-top:0}
+  .navbar.drop .nav-link-work-copy.work.big.drop{padding-top:10px;font-size:16px;line-height:12px}
+  .navbar.drop .div-block-21-copy{margin-top:6px}
+  /* "Work with us" in the header stays on one line */
+  .nav-link-work.work.big{white-space:nowrap}
+  .div-block-21{flex:none}
+}
+
+/* ---- from site head code ---- */
+/* Section labels: the number is drawn by CSS and the name is grey, so numbers never get into the text, headings or Reading view */
+body{counter-reset:mb-sec}
+.grid04.text>.work>.paragraph:first-child,.grid04.text>.work>h2:first-child,[data-mb-rv-sec] .mb-rv-label,.h2-small,.ind-intro>.ind-label,.container.header>.paragraph.approa:first-child{counter-increment:mb-sec;color:rgba(0,0,0,.5)}
+.grid04.text>.work>.paragraph:first-child *,.grid04.text>.work>h2:first-child *,.h2-small *{color:inherit;font-weight:inherit}
+.heading.more{counter-increment:mb-sec}
+.grid04.text>.work>.paragraph:first-child::before,.grid04.text>.work>h2:first-child::before,[data-mb-rv-sec] .mb-rv-label::before,.h2-small::before,.ind-intro>.ind-label::before,.container.header>.paragraph.approa:first-child::before,.heading.more::before{content:"(" counter(mb-sec,decimal-leading-zero) ")";display:block;color:#000}
+.heading.more::before{font-size:16px;line-height:21px;letter-spacing:0;margin-bottom:14px}
+.grid04.text>.work>.paragraph.light:first-child,.grid04.text>.work>.paragraph.lear:first-child,.ind-intro>.ind-label{color:rgba(255,255,255,.5)}
+.grid04.text>.work>.paragraph.light:first-child::before{color:rgb(221,211,211)}
+.grid04.text>.work>.paragraph.lear:first-child::before,.ind-intro>.ind-label::before{color:#fff}
+.mb-article .section.learn .grid04.text>.work>.paragraph.lear:first-child{color:rgba(0,0,0,.5)}
+.mb-article .section.learn .grid04.text>.work>.paragraph.lear:first-child::before{color:#000}
+/* Not a section label (e.g. "Effective Date" on policy pages): no number, normal color */
+[data-mb-nonum]{counter-increment:none!important;color:inherit!important}
+[data-mb-nonum]::before{content:none!important}
+
+/* ---- from site head code ---- */
+/* Pointer effects (desktop only). Hero and footer CTA pairs: hovering the second button pours the first one's fill into it,
+   the first one empties to the second one's look. Header "Work with us": a yellow fill flows in under the link.
+   Home and contact heroes, industry rows: an image trail behind the cursor. Work cards: an infinity sign with eyes follows the cursor. */
+.mb-liq{position:relative;z-index:6;isolation:isolate}
+.mb-liq.is-on:not(.is-a) .mb-liq__a,.mb-liq.is-on .mb-liq__b{background:transparent!important;border-color:transparent!important}
+.mb-liq.is-on:not(.is-a) .mb-liq__a{color:var(--mb-ta)!important}
+.mb-liq.is-on .mb-liq__b{color:var(--mb-tb)!important}
+.mb-liq__svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:-1}
+.mb-liq.is-a .mb-liq__svg>g[clip-path]{opacity:0;transition:opacity 0s .3s}
+.mb-pour{position:fixed;left:0;top:0;z-index:999;overflow:visible;pointer-events:none}
+.mb-pour-on{-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-decoration-color:transparent!important}
+.mb-trail{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+.mb-trail__t{position:absolute;left:0;top:0;display:block;width:var(--s);height:var(--s);max-width:none;margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);object-fit:cover;border-radius:4px;opacity:0;will-change:transform,opacity;user-select:none;-webkit-user-drag:none}
+.mb-eyes{position:fixed;left:0;top:0;z-index:998;pointer-events:none;will-change:transform}
+.mb-eyes__in{transform:scale(0);transition:transform .22s cubic-bezier(.55,0,1,.45)}
+.mb-eyes.is-on .mb-eyes__in{transform:scale(1);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.mb-eyes__in svg{display:block;overflow:visible}
+.mb-eyes__lid{transform-box:view-box;transform-origin:19px 14px;transition:transform .08s ease-in-out}
+.mb-eyes.is-blink .mb-eyes__lid{transform:scaleY(.1)}
+
+/* ---- from site footer code ---- */
+.mbx-bar{--mbx-ease:cubic-bezier(.19,1,.22,1);position:fixed;left:0;right:0;bottom:28px;z-index:900;display:flex;align-items:flex-end;justify-content:space-between;padding:0 42px;pointer-events:none;font-family:Graphik,Arial,sans-serif;color:#000}.mbx-glass{background:rgba(255,255,255,.74);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 0 0 1px rgba(0,0,0,.06),0 12px 32px rgba(0,0,0,.08)}.mbx-pop{opacity:0;transform:scale(0);transition:transform .75s var(--mbx-ease),opacity .35s linear}.mbx-pop.is-on{opacity:1;transform:scale(1)}.mbx-idea{position:relative;pointer-events:none}.mbx-idea.is-on{pointer-events:auto}.mbx-idea__btn{display:flex;align-items:center;gap:30px;height:64px;padding:0 7px 0 28px;border:0;border-radius:999px;cursor:pointer;font:inherit;font-size:17px;line-height:1;color:#000;transition:background-color .3s linear}.mbx-idea__btn:hover{background:rgba(255,255,255,.92)}.mbx-idea__disc{display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:#fff94b}.mbx-plus{position:relative;display:block;width:16px;height:16px}.mbx-plus:before,.mbx-plus:after{content:"";position:absolute;left:0;top:50%;width:100%;height:1.5px;background:#000;transform:translateY(-50%);transition:transform .5s var(--mbx-ease)}.mbx-plus:after{transform:translateY(-50%) rotate(90deg)}.mbx-idea.is-open .mbx-plus:after{transform:translateY(-50%) rotate(90deg) scaleX(0)}.mbx-idea__body{position:absolute;left:0;bottom:100%;width:min(460px,calc(100vw - 32px));padding-bottom:12px;visibility:hidden;transition:visibility 0s linear .5s}.mbx-idea.is-open .mbx-idea__body{visibility:visible;transition:none}.mbx-idea__card{display:flex;flex-direction:column;justify-content:space-between;gap:48px;box-sizing:border-box;min-height:min(480px,calc(100vh - 200px));max-height:calc(100vh - 150px);overflow:auto;padding:28px 30px 32px;border-radius:14px;background:rgba(255,255,255,.93);opacity:0;clip-path:inset(100% 0 0 0 round 14px);transform:scale(.5);transform-origin:0 calc(100% + 12px);transition:clip-path .5s var(--mbx-ease),transform .5s var(--mbx-ease),opacity .2s linear .1s}.mbx-idea.is-open .mbx-idea__card{opacity:1;clip-path:inset(0 0 0 0 round 14px);transform:none;transition:clip-path .75s var(--mbx-ease),transform .75s var(--mbx-ease),opacity .2s linear}.mbx-idea__label{font-size:15px;line-height:1.3;color:#8e9396}.mbx-idea__quote{margin:20px 0 0;font-size:46px;line-height:1.04;letter-spacing:-1.5px;font-weight:500}.mbx-idea__text{margin:0;max-width:390px;font-size:18px;line-height:1.4}.mbx-switch{pointer-events:none;margin-left:auto;padding:7px;border-radius:999px}.mbx-switch.is-on{pointer-events:auto}.mbx-switch__track{display:flex;height:50px}.mbx-sw{position:relative;width:136px;height:100%;padding:0;border:0;border-radius:999px;overflow:hidden;cursor:pointer;background:transparent;color:#000;font:inherit;font-size:17px;transition:width .75s var(--mbx-ease),background-color .35s linear,color .35s linear}.mbx-sw.is-current{background:#000;color:#fff}.mbx-sw__label,.mbx-sw__icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}.mbx-sw__label{white-space:nowrap;transition:opacity .3s linear .15s,transform .75s var(--mbx-ease)}.mbx-sw__icon{opacity:0;transform:translateY(20px);transition:opacity .25s linear,transform .75s var(--mbx-ease)}.mbx-switch.is-compact:not(:hover) .mbx-sw{width:50px}.mbx-switch.is-compact:not(:hover) .mbx-sw__label{opacity:0;transform:translateY(-20px);transition:opacity .25s linear,transform .75s var(--mbx-ease)}.mbx-switch.is-compact:not(:hover) .mbx-sw__icon{opacity:1;transform:none;transition:opacity .3s linear .15s,transform .75s var(--mbx-ease)}body.mbx-reading .mbx-off{display:none!important}.mbx-read{display:none;position:relative;z-index:12;overflow:clip;background:#fff;padding:0 42px;grid-template-columns:minmax(0,32%) minmax(0,1fr);column-gap:8%}body.mbx-reading .mbx-read{display:grid}.mbx-read__media{position:sticky;top:0;align-self:start;height:100vh;overflow:visible}.mbx-read__stack{display:flex;flex-direction:column;gap:16px;padding:110px 0 40px;will-change:transform}.mbx-read__row{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}.mbx-read__m{display:block;width:100%;height:auto;object-fit:cover;background:#f2f2f2}.mbx-read__text{max-width:760px;padding:150px 0 160px;font-family:Graphik,Arial,sans-serif;color:#000}.mbx-read__text *{color:inherit}.mbx-ch{padding-bottom:120px}.mbx-ch:last-child{padding-bottom:0}.mbx-ch__num,.mbx-ch__label{font-size:16px;line-height:1.3}.mbx-ch__label{margin-top:14px}.mbx-ch__title{margin:44px 0 0;font-size:44px;line-height:1.1;letter-spacing:-1.5px;font-weight:400}.mbx-ch__title.is-name{font-size:64px;letter-spacing:-2px}.mbx-ch__title.is-long{font-size:32px;line-height:1.2;letter-spacing:-.8px}.mbx-ch__lead{margin:36px 0 0;font-size:26px;line-height:1.3;letter-spacing:-.4px}.mbx-ch__body{margin-top:36px;font-size:20px;line-height:1.5;color:#3d3d3d}.mbx-ch__body p{margin:0 0 1em}.mbx-ch__body p:last-child{margin-bottom:0}.mbx-details{margin-top:64px;font-size:17px;line-height:1.35}.mbx-details__head{padding-bottom:18px;border-bottom:1px solid #d9d9d9}.mbx-details__row{display:flex;justify-content:space-between;gap:32px;padding:20px 0;border-bottom:1px solid #d9d9d9}.mbx-details__row span:last-child{text-align:right}.mbx-read.is-dark .mbx-read__text{color:#fff}.mbx-read.is-dark .mbx-ch__body{color:#bdbdbd}.mbx-read.is-dark .mbx-details__head,.mbx-read.is-dark .mbx-details__row{border-color:rgba(255,255,255,.18)}.mbx-read.is-dark .mbx-read__m{background:rgba(255,255,255,.06)}.mbx-ghosts{position:fixed;inset:0;z-index:899;pointer-events:none}.mbx-ghosts>*{position:absolute;display:block;object-fit:cover}@media (max-width:991px){.mbx-read{column-gap:6%;grid-template-columns:minmax(0,36%) minmax(0,1fr)}.mbx-ch__title{font-size:34px}.mbx-ch__title.is-name{font-size:48px}.mbx-ch__title.is-long{font-size:26px}.mbx-ch__lead{font-size:22px}.mbx-ch__body{font-size:18px}}@media (max-width:767px){.mbx-bar{bottom:16px;padding:0 16px}.mbx-switch{display:none}.mbx-idea__btn{height:56px;gap:22px;padding:0 6px 0 22px;font-size:16px}.mbx-idea__disc{width:44px;height:44px}.mbx-idea__card{min-height:0;gap:36px;padding:22px 22px 26px}.mbx-idea__quote{font-size:36px}.mbx-idea__text{font-size:17px}}@media (prefers-reduced-motion:reduce){.mbx-bar *,.mbx-pop{transition:none!important}}
+
+/* ---- from site footer code ---- */
+.div-block-22.mbx-dlist{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:0;border-top:1px solid rgba(128,128,128,.35)}
+.div-block-22.mbx-dlist>*{margin:0;padding:11px 0;border-bottom:1px solid rgba(128,128,128,.35)}
+.div-block-22.mbx-dlist>.mbx-dl{grid-column:1}
+.div-block-22.mbx-dlist>.mbx-dv{grid-column:2;padding-left:20px;text-align:right}
+.div-block-22.mbx-dlist>.mbx-dx{grid-column:1/-1;border-bottom:0;padding-top:16px}
+.mbx-read__text .mbx-rv__card{margin-top:44px;color:#000}
+.mbx-read__text .mbx-rv__card .mb-rv-co{color:#6d6d6d}
+.mbx-read__text .mbx-rv__card .mb-rv-slide{min-height:0}
+.mbx-read__text .mbx-rv__card .mb-rv-q{max-width:none;font-size:32px;line-height:40px;letter-spacing:-.8px}
+@media (max-width:991px){.mbx-read__text .mbx-rv__card .mb-rv-q{font-size:26px;line-height:33px}}
+
+/* ---- from site footer code ---- */
+/* Menu icon: two CSS lines instead of the menu.svg image. On hover they spread apart, on click they turn into a cross
+   that also closes the menu. The full-screen menu drops with a spring and its links come in one after another. */
+.mb-burger{position:fixed;left:0;top:0;z-index:1001;margin:0;padding:0;border:0;background:none;cursor:pointer;mix-blend-mode:difference;-webkit-tap-highlight-color:transparent;opacity:0;pointer-events:none}
+.mb-burger::before{content:"";position:absolute;inset:-14px -10px}
+.mb-burger i{position:absolute;left:0;right:0;top:50%;height:var(--t,3px);margin-top:calc(var(--t,3px)/-2);background:#fff;transition:transform .55s cubic-bezier(.34,1.56,.64,1)}
+.mb-burger i:first-child{transform:translateY(calc(var(--g,5px)*-1))}
+.mb-burger i:last-child{transform:translateY(var(--g,5px))}
+@media (hover:hover) and (pointer:fine){
+  .mb-burger:not(.is-open):hover i:first-child{transform:translateY(calc(var(--g,5px)*-1 - 3px))}
+  .mb-burger:not(.is-open):hover i:last-child{transform:translateY(calc(var(--g,5px) + 3px))}
+}
+.mb-burger.is-open i:first-child{transform:rotate(45deg) scale(var(--x,.76),.6)}
+.mb-burger.is-open i:last-child{transform:rotate(-45deg) scale(var(--x,.76),.6)}
+.mb-burger:focus-visible{outline:1px solid #fff;outline-offset:8px}
+html.mb-burger-on .navbar:not(.drop) .div-block-21 img,html.mb-burger-on .navbar.drop .div-block-21-copy img{visibility:hidden}
+/* the menu overshoots a little when it drops, so it gets a black strip above its top edge */
+html.mb-burger-on .navbar.drop::before{content:"";display:block;position:absolute;left:0;bottom:calc(100% - 1px);width:100%;height:30vh;background:inherit}
+
+/* Text selection (2026-10-23): brand yellow with black text across the site */
+::selection{background-color:#fff94b;color:#000}
+/* on yellow surfaces the selection flips to black with yellow text, so it stays visible */
+.section.yellow::selection,.section.yellow ::selection,.section.greybg.red::selection,.section.greybg.red ::selection,.success-message::selection,.success-message ::selection,.mm-method.is-yellow::selection,.mm-method.is-yellow ::selection,.mb-cta-box::selection,.mb-cta-box ::selection,.button-contact::selection,.button-contact ::selection,.discuss::selection,.discuss ::selection,.expressbutton::selection,.expressbutton ::selection,.order-button-brand::selection,.order-button-brand ::selection,.order-button-web::selection,.order-button-web ::selection,.formsent::selection,.formsent ::selection{background-color:#000;color:#fff94b}
