@@ -1,0 +1,25 @@
+SuperPlane Brand Identity and Generative Art
+Client: SuperPlane (superplane.com)
+Agency: Metabrand (metabrand.digital)
+Case study: https://www.metabrand.digital/work/superplane
+Creative direction: Dmitry Komissarov
+Scope: brand strategy, visual identity, product branding, website, generative art, motion
+
+IMAGES (2880 x 2040 px, RGB JPG)
+01-superplane-lockup.jpg: The SuperPlane lockup on Signal Orange.
+02-superplane-mark-construction.jpg: Construction of the mark, two workflow cards joined by an S-shaped connector.
+03-superplane-vectors.jpg: The arrow field. Every engineer and agent is a vector.
+04-superplane-issues-to-prs.jpg: Headline grammar, input -> output: Issues -> PRs.
+05-superplane-led-wall.jpg: "Guardrailing growing systems" on an LED wall, with the generative arrow field.
+06-superplane-connect.jpg: Brand film still: Backlog -> Trust, with the mark in the middle.
+07-superplane-palette-and-type.jpg: Palette (Pitch, Deep Teal, Cloud, Signal Orange) and Instrument Sans.
+08-superplane-app-icon-and-badge.jpg: App icon and an Issues -> PRs badge.
+09-superplane-trust-screen.jpg: Website section: "Agents can't be trusted on autopilot."
+10-superplane-a-new-era.jpg: Website hero: arrows fly toward the viewer.
+11-superplane-website-board.jpg: Website first screen: a live task board moves a ticket from backlog to done.
+12-superplane-generative-engine.jpg: The generative engine written for the brand: an arrow field with two poles, with the controls used to render posts, slides and event screens.
+
+MOTION (MP4, 1440 px wide, no sound, each under 10 MB)
+superplane-brand-film.mp4: Brand film, 35 s.
+superplane-vector-film.mp4: "Every engineer and agent is a vector. Company progress is their sum." 20 s.
+superplane-mark-build.mp4: The mark being built from two workflow cards, 12 s.
