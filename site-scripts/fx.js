@@ -21,7 +21,9 @@
     ['blocks-1.0.2.js', '.mb-blk'],         /* Approach, What you can expect: the picture zooms in its frame, a note shows under it,
                                                the heading comes down to the picture, the number moves up */
     ['cta-1.0.0.js', '[data-project-heading]'], /* yellow CTA: "Let's discuss your project!" changes language word by word */
-    ['cards-1.0.3.js', '.image-10']         /* blog article cards: smooth cover zoom on hover, video covers (CMS field, or blog-covers.json by slug on other pages) and short card titles */
+    ['cards-1.0.3.js', '.image-10'],        /* blog article cards: smooth cover zoom on hover, video covers (CMS field, or blog-covers.json by slug on other pages) and short card titles */
+    ['navcta-1.0.0.js', '.navbar .js-calendly'] /* header "Work with us": a menu with Book a call (Calendly popup) and Send a message (/contact);
+                                               opens on hover with a mouse, on tap on phones */
   ].forEach(function (f) {
     if (f[1] && !document.querySelector(f[1])) return;
     var s = document.createElement('script');
